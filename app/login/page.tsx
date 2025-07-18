@@ -40,14 +40,17 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center p-4">
-      <div className="card w-full max-w-md bg-base-100 shadow-2xl">
+    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
+      <div className="card w-full max-w-md bg-base-100 shadow-xl border border-base-300/50">
         <div className="card-body">
           <div className="text-center mb-6">
             <div className="flex items-center justify-center mb-4">
-              <Sparkles className="w-8 h-8 text-primary mr-2" />
-              <h1 className="text-3xl font-bold">Skimmr</h1>
+              <div className="relative">
+                <Sparkles className="w-10 h-10 text-primary animate-pulse" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-secondary rounded-full animate-bounce"></div>
+              </div>
             </div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">Skimmr</h1>
             <h2 className="text-xl font-semibold">Welcome Back</h2>
             <p className="text-base-content/70">Sign in to your account</p>
           </div>
@@ -55,12 +58,12 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text font-medium">Email</span>
               </label>
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full focus:input-primary"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -69,26 +72,26 @@ export default function Login() {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text font-medium">Password</span>
               </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
-                  className="input input-bordered w-full pr-12"
+                  className="input input-bordered w-full pr-12 focus:input-primary"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <button
                   type="button"
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-base-content/50 hover:text-base-content"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="w-5 h-5 text-base-content/50" />
+                    <EyeOff className="w-5 h-5" />
                   ) : (
-                    <Eye className="w-5 h-5 text-base-content/50" />
+                    <Eye className="w-5 h-5" />
                   )}
                 </button>
               </div>
@@ -101,21 +104,30 @@ export default function Login() {
               }`}
               disabled={loading}
             >
-              {!loading && <LogIn className="w-5 h-5" />}
-              {loading ? "Signing In..." : "Sign In"}
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Signing In...
+                </>
+              ) : (
+                <>
+                  <LogIn className="w-5 h-5" />
+                  Sign In
+                </>
+              )}
             </button>
           </form>
 
-          <div className="divider">OR</div>
+          <div className="divider text-base-content/50">OR</div>
 
           <div className="text-center">
             <p className="text-base-content/70">
               Don't have an account?{" "}
-              <Link href="/register" className="link link-primary">
-                Sign up
+              <Link href="/register" className="link link-primary font-medium">
+      <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
               </Link>
-            </p>
-          </div>
+          <Loader2 className="w-6 h-6 animate-spin mx-auto mb-3 text-primary" />
+          <p className="text-sm text-base-content/70">Signing you in...</p>
         </div>
       </div>
     </div>

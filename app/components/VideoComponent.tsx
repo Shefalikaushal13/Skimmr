@@ -5,7 +5,7 @@ import { Play, Eye } from "lucide-react";
 
 export default function VideoComponent({ video }: { video: IVideo }) {
   return (
-    <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+    <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-base-300/50 hover:border-primary/30">
       <figure className="relative">
         <Link href={`/videos/${video._id}`} className="relative group block w-full">
           <div
@@ -28,14 +28,14 @@ export default function VideoComponent({ video }: { video: IVideo }) {
             />
             
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="bg-white/90 rounded-full p-3">
-                <Play className="w-6 h-6 text-primary fill-current" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="bg-primary/90 backdrop-blur-sm rounded-full p-4 shadow-lg">
+                <Play className="w-6 h-6 text-white fill-current" />
               </div>
             </div>
             
             {/* Video duration badge */}
-            <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+            <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
               <Eye className="w-3 h-3 inline mr-1" />
               Reel
             </div>
@@ -63,7 +63,7 @@ export default function VideoComponent({ video }: { video: IVideo }) {
           </div>
           <Link
             href={`/videos/${video._id}`}
-            className="btn btn-primary btn-sm gap-1"
+            className="btn btn-primary btn-sm gap-1 hover:scale-105 transition-transform"
           >
             <Play className="w-3 h-3" />
             Watch

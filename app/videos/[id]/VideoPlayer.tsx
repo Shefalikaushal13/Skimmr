@@ -66,8 +66,8 @@ export default function VideoPlayer({ videoId }: VideoPlayerProps) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center text-white">
-          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4" />
-          <p className="text-lg">Loading video...</p>
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4" />
+          <p className="text-base">Loading video...</p>
         </div>
       </div>
     );
@@ -95,13 +95,13 @@ export default function VideoPlayer({ videoId }: VideoPlayerProps) {
       {/* Back Button */}
       <button
         onClick={() => router.back()}
-        className="absolute top-4 left-4 z-20 btn btn-circle btn-ghost text-white hover:bg-white/20"
+        className="absolute top-4 left-4 z-20 btn btn-circle btn-ghost text-white hover:bg-white/20 backdrop-blur-sm"
       >
         <ArrowLeft className="w-6 h-6" />
       </button>
 
       {/* Video Container */}
-      <div className="relative w-full max-w-md mx-auto h-screen">
+      <div className="relative w-full max-w-sm mx-auto h-screen">
         <IKVideo
           path={video.videoUrl}
           transformation={[
@@ -118,7 +118,7 @@ export default function VideoPlayer({ videoId }: VideoPlayerProps) {
         />
 
         {/* Video Info Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 text-white">
           <h1 className="text-xl font-bold mb-2">{video.title}</h1>
           <p className="text-white/80 text-sm mb-4 line-clamp-3">
             {video.description}
@@ -132,7 +132,7 @@ export default function VideoPlayer({ videoId }: VideoPlayerProps) {
             <div className="flex items-center gap-4">
               <button
                 onClick={handleLike}
-                className={`btn btn-circle btn-ghost text-white hover:bg-white/20 ${
+                className={`btn btn-circle btn-ghost text-white hover:bg-white/20 backdrop-blur-sm transition-all ${
                   liked ? "text-red-500" : ""
                 }`}
               >
@@ -141,12 +141,12 @@ export default function VideoPlayer({ videoId }: VideoPlayerProps) {
               
               <button
                 onClick={handleShare}
-                className="btn btn-circle btn-ghost text-white hover:bg-white/20"
+                className="btn btn-circle btn-ghost text-white hover:bg-white/20 backdrop-blur-sm"
               >
                 <Share2 className="w-6 h-6" />
               </button>
               
-              <button className="btn btn-circle btn-ghost text-white hover:bg-white/20">
+              <button className="btn btn-circle btn-ghost text-white hover:bg-white/20 backdrop-blur-sm">
                 <MessageCircle className="w-6 h-6" />
               </button>
             </div>

@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Skimmr - AI Video Reels",
-  description: "Create and share amazing video reels with AI",
+  title: "Skimmr - Create Amazing Reels",
+  description: "Create, share and discover amazing video reels with Skimmr",
 };
 
 export default function RootLayout({
