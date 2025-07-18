@@ -4,7 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Eye, EyeOff, LogIn, Sparkles } from "lucide-react";
+import { Eye, EyeOff, LogIn, Sparkles, Loader2 } from "lucide-react";
 import { useNotification } from "../components/Notifications";
 
 export default function Login() {
@@ -124,10 +124,10 @@ export default function Login() {
             <p className="text-base-content/70">
               Don't have an account?{" "}
               <Link href="/register" className="link link-primary font-medium">
-      <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
+                Sign up
               </Link>
-          <Loader2 className="w-6 h-6 animate-spin mx-auto mb-3 text-primary" />
-          <p className="text-sm text-base-content/70">Signing you in...</p>
+            </p>
+          </div>
         </div>
       </div>
     </div>
