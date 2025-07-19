@@ -36,6 +36,15 @@ class ApiClient {
         return response.json();
     }
 
+
+    async post<T = any>(endpoint: string, data: any) {
+    return this.fetch<T>(endpoint, {
+      method: "POST",
+      body: data,
+    });
+    }
+
+
     async getVideos() {
         return this.fetch<IVideo[]>("/videos");
     }
@@ -51,3 +60,4 @@ class ApiClient {
         });
     }
 }
+export const apiClient = new ApiClient()
