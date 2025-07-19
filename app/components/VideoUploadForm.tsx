@@ -125,9 +125,9 @@ export default function VideoUploadForm() {
                 <div className="alert alert-success mt-3">
                   <Sparkles className="w-4 h-4" />
                   <span>Video uploaded successfully!</span>
-                  <span>Video uploaded successfully!</span>
                 </div>
               )}
+            </div>
             </div>
           </div>
 
@@ -165,7 +165,6 @@ export default function VideoUploadForm() {
               {thumbnailUrl && (
                 <div className="alert alert-success mt-3">
                   <Sparkles className="w-4 h-4" />
-                  <span>Thumbnail uploaded successfully!</span>
                   <span>Thumbnail uploaded successfully!</span>
                 </div>
               )}
