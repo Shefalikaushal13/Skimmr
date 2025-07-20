@@ -1,137 +1,117 @@
-"use client"
+'use client';
 
-import Link from 'next/link'
-import { signOut, useSession } from 'next-auth/react'
-import { Home, User, Upload, Sparkles, Video } from "lucide-react";
-import { useNotification } from './Notifications';
-
+import Link from 'next/link';
+import { Menu, User } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const {data:session} = useSession();
-    const { showNotification } = useNotification();
+  return (
+    <nav className="sticky top-0 z-50 w-full bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md text-white">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        {/* Logo */}
+        <Link href="/" className="font-bold text-xl tracking-wide">
+          Skimmr
+        </Link>
 
-    const handleSignOut= async () => {
-        try {
-            await signOut();
-            showNotification("Signed out successfully", "success");
-        } catch {
-            showNotification("Failed to sign out", "error");
-        }
-    };
-
-    return (
-        <div className="navbar bg-base-100/95 backdrop-blur-md border-b border-base-300/50 sticky top-0 z-50 shadow-sm">
-      <div className="container mx-auto">
-        <div className="flex-1 px-2 lg:flex-none">
-          <Link
-            href="/"
-            className="btn btn-ghost text-xl gap-2 normal-case font-bold text-primary hover:text-primary-focus"
-            prefetch={true}
-            onClick={() =>
-              showNotification("Welcome to Skimmr ✨", "info")
-            }
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {/* About Link */}
+          <a
+            href="#hero"
+            className="px-3 py-2 rounded-lg hover:bg-primary/10 transition"
           >
-            <Sparkles className="w-6 h-6" />
-            Skimmr
-          </Link>
-        </div>
-        
-        {/* Navigation Links */}
-        <div className="hidden md:flex flex-none gap-2">
-          <Link
-            href="/"
-            className="btn btn-ghost gap-2 text-sm"
+            About
+          </a>
+
+          {/* Contact Link */}
+          <a
+            href="#contact"
+            className="px-3 py-2 rounded-lg hover:bg-primary/10 transition"
           >
-            <Home className="w-4 h-4" />
-            Home
+            Contact
+          </a>
+
+          {/* CTA Button */}
+          <Link
+            href="/upload"
+            className="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-focus transition-all border border-white/10 shadow-lg backdrop-blur-md"
+>
+            Start Creating
           </Link>
-          {session && (
-            <Link
-              href="/upload"
-              className="btn btn-ghost gap-2 text-sm"
+
+
+
+          {/* Avatar */}
+          <div className="dropdown dropdown-end ml-4 hidden md:block">
+            <div
+              tabIndex={0}
+              role="button"
+              className="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-primary/10 transition-all cursor-pointer"
             >
-              <Upload className="w-4 h-4" />
-              Create
-            </Link>
-          )}
-        </div>
-        
-        <div className="flex flex-1 justify-end px-2">
-          <div className="flex items-stretch gap-2">
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle hover:bg-primary/10"
-              >
-                <User className="w-5 h-5 text-primary" />
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] shadow-xl bg-base-100 rounded-box w-64 mt-4 py-2 border border-base-300"
-              >
-                {session ? (
-                  <>
-                    <li className="px-4 py-1">
-                      <span className="text-sm text-base-content/70 font-medium">
-                        {session.user?.email?.split("@")[0]}
-                      </span>
-                    </li>
-                    <div className="divider my-1"></div>
-
-                    <li className="md:hidden">
-                      <Link
-                        href="/"
-                        className="px-4 py-2 hover:bg-base-200 block w-full flex items-center gap-2"
-                      >
-                        <Home className="w-4 h-4" />
-                        Home
-                      </Link>
-                    </li>
-
-                    <li>
-                      <Link
-                        href="/upload"
-                        className="px-4 py-2 hover:bg-base-200 block w-full flex items-center gap-2"
-                        onClick={() =>
-                          showNotification("Create your next viral reel! 🎬", "info")
-                        }
-                      >
-                        <Upload className="w-4 h-4" />
-                        Create Reel
-                      </Link>
-                    </li>
-
-                    <li>
-                      <button
-                        onClick={handleSignOut}
-                        className="px-4 py-2 text-error hover:bg-error/10 w-full text-left flex items-center gap-2"
-                      >
-                        <User className="w-4 h-4" />
-                        Sign Out
-                      </button>
-                    </li>
-                  </>
-                ) : (
-                  <li>
-                    <Link
-                      href="/login"
-                      className="px-4 py-2 hover:bg-base-200 block w-full flex items-center gap-2"
-                      onClick={() =>
-                        showNotification("Please sign in to continue", "info")
-                      }
-                    >
-                      <User className="w-4 h-4" />
-                      Login
-                    </Link>
-                  </li>
-                )}
-              </ul>
+              <User className="w-5 h-5 text-white" />
             </div>
-          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] mt-4 py-3 w-72 rounded-2xl shadow-2xl border border-white/20 bg-white/10 backdrop-blur-md text-white"
+          >
+            <li>
+              <Link href="/profile" className="px-4 py-2 hover:bg-primary/10 block">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link href="/settings" className="px-4 py-2 hover:bg-primary/10 block">
+                Settings
+              </Link>
+            </li>
+            <li>
+              <Link href="/logout" className="px-4 py-2 hover:bg-primary/10 block">
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="btn btn-ghost btn-circle hover:bg-primary/10"
+          >
+            <Menu className="w-5 h-5 text-white" />
+          </button>
         </div>
       </div>
-    </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden px-6 pb-4 flex flex-col gap-3 bg-white/10 backdrop-blur-md border-t border-white/20">
+          <a
+            href="#hero"
+            className="px-3 py-2 rounded-lg hover:bg-primary/10 transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            About
+          </a>
+          <a
+            href="#contact"
+            className="px-3 py-2 rounded-lg hover:bg-primary/10 transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Contact
+          </a>
+          <Link
+            href="/upload"
+            className="btn btn-primary text-center w-full"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Upload Now
+          </Link>
+        </div>
+      )}
+      </div>
+    </nav>
   );
 }

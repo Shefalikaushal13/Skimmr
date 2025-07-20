@@ -98,49 +98,78 @@ body {
 
 /* Enhanced button hover effects */
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, hsl(var(--p)), hsl(var(--s)));
+  background: linear-gradient(135deg, hsl(var(--p)), hsl(var(--s))) !important;
   border: none;
-  box-shadow: 0 4px 14px 0 hsl(var(--p) / 0.3);
+  box-shadow: 0 8px 25px -5px hsl(var(--p) / 0.4);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 20px 0 hsl(var(--p) / 0.4);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 35px -5px hsl(var(--p) / 0.5);
+  transform: translateY(-3px) scale(1.02);
 }
 
 /* Card enhancements */
 .card {
-  backdrop-filter: blur(10px);
-  border: 1px solid hsl(var(--b3) / 0.5);
+  backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--b3) / 0.3);
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px hsl(var(--p) / 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px hsl(var(--p) / 0.15);
 }
 
 /* Input focus states */
 .input:focus,
 .textarea:focus {
   border-color: hsl(var(--p));
-  box-shadow: 0 0 0 3px hsl(var(--p) / 0.1);
+  box-shadow: 0 0 0 4px hsl(var(--p) / 0.15);
+  transform: translateY(-1px);
 }
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(var(--p)), hsl(var(--s)));
+  background: linear-gradient(135deg, hsl(var(--p)), hsl(var(--s)), hsl(var(--a)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Loading spinner improvements */
 .loading {
   pointer-events: none;
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced navbar */
+.navbar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 /* Hero section enhancements */
@@ -156,6 +185,36 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, hsl(var(--p) / 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 30% 70%, hsl(var(--p) / 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, hsl(var(--s) / 0.15) 0%, transparent 50%);
   pointer-events: none;
+}
+
+/* File input enhancements */
+.file-input {
+  transition: all 0.3s ease;
+}
+
+.file-input:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsl(var(--p) / 0.1);
+}
+
+/* Progress bar enhancements */
+.progress {
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-primary::-webkit-progress-value {
+  background: linear-gradient(90deg, hsl(var(--p)), hsl(var(--s)));
+  border-radius: 4px;
+}
+
+/* Alert enhancements */
+.alert {
+  border-radius: 12px;
+  border: 1px solid hsl(var(--b3) / 0.3);
+  backdrop-filter: blur(8px);
 }

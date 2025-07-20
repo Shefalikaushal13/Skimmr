@@ -74,7 +74,7 @@ export default function FileUpload({
         onSuccess={handleSuccess}
         onUploadStart={handleStartUpload}
         onUploadProgress={handleProgress}
-        accept={fileType === "video" ? "video/*" : "image/*"}
+        accept={fileType === "video" ? "video/mp4,video/mov,video/avi,video/mkv,video/webm,video/quicktime" : "image/jpeg,image/png,image/webp,image/gif"}
         className="file-input file-input-bordered w-full"
         validateFile={validateFile}
         useUniqueFileName={true}

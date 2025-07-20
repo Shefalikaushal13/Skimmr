@@ -98,6 +98,16 @@ export default function VideoUploadForm() {
               </span>
             </label>
             <div className="border-2 border-dashed border-primary/30 rounded-lg p-6 bg-primary/5 hover:bg-primary/10 transition-colors">
+            <div className="border-2 border-dashed border-primary/30 rounded-2xl p-8 bg-gradient-to-br from-primary/5 to-secondary/5 hover:from-primary/10 hover:to-secondary/10 transition-all duration-300">
+              <div className="text-center mb-4">
+                <Video className="w-12 h-12 mx-auto text-primary/60 mb-3" />
+                <p className="text-sm text-base-content/70 mb-2">
+                  Drag and drop your video file here, or click to browse
+                </p>
+                <p className="text-xs text-base-content/50">
+                  Supports: MP4, MOV, AVI, MKV, WebM (Max: 100MB)
+                </p>
+              </div>
               <FileUpload
                 onSuccess={handleVideoUpload}
                 onProgress={setVideoProgress}
@@ -118,6 +128,7 @@ export default function VideoUploadForm() {
                 </div>
               )}
             </div>
+            </div>
           </div>
 
           {/* Thumbnail Upload */}
@@ -128,7 +139,16 @@ export default function VideoUploadForm() {
                 Thumbnail Image
               </span>
             </label>
-            <div className="border-2 border-dashed border-secondary/30 rounded-lg p-6 bg-secondary/5 hover:bg-secondary/10 transition-colors">
+            <div className="border-2 border-dashed border-secondary/30 rounded-2xl p-8 bg-gradient-to-br from-secondary/5 to-accent/5 hover:from-secondary/10 hover:to-accent/10 transition-all duration-300">
+              <div className="text-center mb-4">
+                <ImageIcon className="w-12 h-12 mx-auto text-secondary/60 mb-3" />
+                <p className="text-sm text-base-content/70 mb-2">
+                  Upload a thumbnail for your reel
+                </p>
+                <p className="text-xs text-base-content/50">
+                  Supports: JPEG, PNG, WebP, GIF (Max: 5MB)
+                </p>
+              </div>
               <FileUpload
                 onSuccess={handleThumbnailUpload}
                 onProgress={setThumbnailProgress}
@@ -155,7 +175,7 @@ export default function VideoUploadForm() {
           <div className="form-control mt-8">
             <button
               type="submit"
-              className={`btn btn-primary btn-lg gap-3 shadow-lg hover:shadow-xl transition-all duration-300 ${
+              className={`btn btn-primary btn-lg gap-3 shadow-2xl hover:shadow-primary/25 transition-all duration-300 border-0 ${
                 uploading ? "loading" : "hover:scale-105"
               }`}
               disabled={uploading || !videoUrl || !thumbnailUrl}
@@ -167,7 +187,7 @@ export default function VideoUploadForm() {
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-5 h-5" />
+                  <Sparkles className="w-6 h-6" />
                   Create Reel
                 </>
               )}
