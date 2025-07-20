@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Menu, User } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,15 +12,21 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md text-white">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
         {/* Logo */}
-        <Link href="/" className="font-bold text-xl tracking-wide">
-          Skimmr
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            alt="Skimmr Logo"
+            width={56}
+            height={56}
+          />
+          <span className="font-bold text-xl tracking-wide">SKIMMR</span>
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {/* About Link */}
+          { }
           <a
-            href="#hero"
+            href="#about"
             className="px-3 py-2 rounded-lg hover:bg-primary/10 transition"
           >
             About
@@ -36,7 +43,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <Link
             href="/upload"
-            className="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-focus transition-all border border-white/10 shadow-lg backdrop-blur-md"
+            className="bg-purple-600 hover:bg-purple-800 text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-focus transition-all border border-white/10 shadow-lg backdrop-blur-md"
 >
             Start Creating
           </Link>

@@ -1,5 +1,3 @@
-// components/LandingPage.tsx
-
 'use client';
 
 import { motion } from 'framer-motion';
@@ -9,126 +7,145 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-black text-white font-sans">
-      {/* Fun Background Texture using Framer Motion */}
-      <motion.div
-        initial={{ backgroundPosition: '0% 0%' }}
-        animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-        transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-        className="absolute inset-0 -z-10 bg-[url('/bg-texture.png')] bg-cover bg-no-repeat opacity-10 blur-sm"
-      />
-
-      {/* Hero Section */}
-      <div className="hero min-h-[80vh] bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 relative overflow-hidden">
-        {/* Background Pattern */}
-<<<<<<< HEAD
-        <div className={`absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] opacity-50`}></div>
-=======
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
->>>>>>> cefe7925a244401ac554d2050004a513206aeda7
-        
-        <div className="hero-content text-center z-10">
-          <div className="max-w-4xl">
-            <div className="flex items-center justify-center mb-8">
-              <div className="relative">
-                <Sparkles className="w-16 h-16 text-primary animate-pulse" />
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full animate-bounce"></div>
-              </div>
-            </div>
-            
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Skimmr
-            </h1>
-            
-            <p className="text-xl md:text-2xl mb-8 text-base-content/80 max-w-2xl mx-auto leading-relaxed">
-              Create, share and discover amazing video reels. 
-              <span className="text-primary font-semibold"> Your creativity, amplified.</span>
-            </p>
-            
-            {/* Stats */}
-            <div className="flex flex-wrap justify-center gap-8 mb-10">
-              <div className="text-center">
-                <div className="flex items-center justify-center mb-2">
-                  <Video className="w-5 h-5 text-primary mr-2" />
-                  <span className="text-2xl font-bold text-primary">{videos.length}+</span>
-                </div>
-                <p className="text-sm text-base-content/60">Reels Created</p>
-              </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center mb-2">
-                  <TrendingUp className="w-5 h-5 text-secondary mr-2" />
-                  <span className="text-2xl font-bold text-secondary">∞</span>
-                </div>
-                <p className="text-sm text-base-content/60">Possibilities</p>
-              </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center mb-2">
-                  <Users className="w-5 h-5 text-accent mr-2" />
-                  <span className="text-2xl font-bold text-accent">Growing</span>
-                </div>
-                <p className="text-sm text-base-content/60">Community</p>
-              </div>
-            </div>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {session ? (
-                <Link 
-                  href="/upload" 
-                  className="btn btn-primary btn-lg gap-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  <Sparkles className="w-5 h-5" />
-                  Create Your Reel
-                </Link>
-              ) : (
-                <>
-                  <Link 
-                    href="/register" 
-                    className="btn btn-primary btn-lg gap-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  >
-                    <Sparkles className="w-5 h-5" />
-                    Get Started
-                  </Link>
-                  <Link 
-                    href="/login" 
-                    className="btn btn-outline btn-lg gap-3 hover:shadow-lg transition-all duration-300"
-                  >
-                    <Play className="w-5 h-5" />
-                    Sign In
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+    <div className="relative w-full min-h-screen overflow-x-hidden bg-black text-white font-sans">
+      {/* Animated Background Texture */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <motion.div
+  animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
+  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+  style={{
+    backgroundImage: "url('/noise-texture.jpg')",
+    backgroundSize: 'cover',
+    opacity: 0.4,
+  }}
+  className="w-full h-full"
+/>
       </div>
 
-      {/* Video Feed Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold mb-4 text-base-content">Latest Reels</h2>
-          <p className="text-lg text-base-content/70 max-w-2xl mx-auto">
-            Discover amazing content from our community
-          </p>
-        </div>
-
-        {videos.length === 0 ? (
-          <div className="text-center py-20 bg-base-100 rounded-3xl shadow-sm">
-            <div className="relative inline-block mb-6">
-              <Video className="w-20 h-20 mx-auto text-base-content/30" />
-              <Sparkles className="w-8 h-8 text-primary absolute -top-2 -right-2 animate-pulse" />
-            </div>
-            <h3 className="text-3xl font-bold mb-4">No reels yet</h3>
-            <p className="text-base-content/70 mb-8 text-lg max-w-md mx-auto">
-              Be the first to share an amazing reel!
-            </p>
-            <Link href={session ? "/upload" : "/register"} className="btn btn-primary btn-lg gap-3 shadow-lg hover:shadow-xl transition-all duration-300">
-              <Sparkles className="w-5 h-5" />
-              {session ? "Create First Reel" : "Join Skimmr"}
-            </Link>
-          </div>
-        </div>
+      {/* Hero Section */}
+      <section id="home" className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent"
+        >
+          SKIMMR
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1 }}
+          className="text-lg md:text-xl max-w-2xl"
+        >
+          Upload, explore, and vibe with micro-reels. SKIMMR is your playground to express, entertain, and get discovered.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="mt-8"
+        >
+          <Link
+            href="/upload"
+            className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition-all"
+          >
+            Upload Now
+          </Link>
+        </motion.div>
       </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 md:px-16 max-w-5xl mx-auto text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl font-bold mb-4"
+        >
+          About SKIMMR
+        </motion.h2>
+        <p className="text-lg text-gray-300">
+          SKIMMR lets you effortlessly upload and enjoy reels made for fast moments. Whether you are a creator or a newbie just starting out with content creation, Skimmr is for everyone, literally.
+        </p>
+      </section>
+
+      
+{/* Built With Section */}
+<section className="py-20 px-4 md:px-16 max-w-5xl mx-auto text-center">
+  <motion.h2
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7 }}
+    className="text-3xl font-bold mb-6"
+  >
+    Built With
+  </motion.h2>
+
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 place-items-center">
+    {/* Next.js */}
+    <div className="flex flex-col items-center hover:scale-105 transition">
+      <img
+        src="nextjs-logo.png"
+        alt="Next.js"
+        className="w-16 h-16 object-contain mb-2"
+      />
+      <p className="text-gray-300 text-sm">Next.js</p>
+    </div>
+
+    {/* Tailwind CSS */}
+    <div className="flex flex-col items-center hover:scale-105 transition">
+      <img
+        src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+        alt="Tailwind CSS"
+        className="w-16 h-16 object-contain mb-2"
+      />
+      <p className="text-gray-300 text-sm">Tailwind CSS</p>
+    </div>
+
+    {/* MongoDB */}
+    <div className="flex flex-col items-center hover:scale-105 transition">
+      <img
+        src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg"
+        alt="MongoDB"
+        className="w-16 h-16 object-contain mb-2"
+      />
+      <p className="text-gray-300 text-sm">MongoDB</p>
+    </div>
+
+    {/* DaisyUI */}
+    <div className="flex flex-col items-center hover:scale-105 transition">
+      <img
+        src="/daisyui-logo.png"
+        alt="DaisyUI"
+        className="w-16 h-16 object-contain mb-2"
+      />
+      <p className="text-gray-300 text-sm">DaisyUI</p>
+    </div>
+
+    {/* ImageKit */}
+    <div className="flex flex-col items-center hover:scale-105 transition">
+      <img
+        src="/imagekit-logo.png"
+        alt="ImageKit"
+        className="w-16 h-16 object-contain mb-2"
+      />
+      <p className="text-gray-300 text-sm">ImageKit</p>
+    </div>
+
+    {/* Node.js */}
+    <div className="flex flex-col items-center hover:scale-105 transition">
+      <img
+        src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg"
+        alt="Node.js"
+        className="w-16 h-16 object-contain mb-2"
+      />
+      <p className="text-gray-300 text-sm">Node.js</p>
+    </div>
+  </div>
+</section>
+
+
     </div>
   );
 }
