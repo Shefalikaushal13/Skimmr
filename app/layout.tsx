@@ -31,7 +31,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <main className="min-h-screen">{children}</main>
-          <Footer /> {/* ✅ moved Footer inside Providers and body */}
+          <Footer /> 
         </Providers>
       </body>
     </html>

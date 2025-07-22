@@ -1,7 +1,7 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
-import { IKContext as ImageKitProvider } from "imagekitio-react";
+import { IKContext } from "imagekitio-react";
 import { NotificationProvider } from "./Notifications";
 
 const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT!;
@@ -26,13 +26,13 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider refetchInterval={5 * 60}>
       <NotificationProvider>
-        <ImageKitProvider
+        <IKContext
           publicKey={publicKey}
           urlEndpoint={urlEndpoint}
           authenticator={authenticator}
         >
           {children}
-        </ImageKitProvider>
+        </IKContext>
       </NotificationProvider>
     </SessionProvider>
   );

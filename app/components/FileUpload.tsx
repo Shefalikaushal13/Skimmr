@@ -69,19 +69,25 @@ export default function FileUpload({
   return (
     <div className="space-y-2">
       <IKUpload
+        publicKey={process.env.NEXT_PUBLIC_PUBLIC_KEY!}
+        urlEndpoint={process.env.NEXT_PUBLIC_URL_ENDPOINT!}
         fileName={fileType === "video" ? "video" : "image"}
         onError={onError}
         onSuccess={handleSuccess}
         onUploadStart={handleStartUpload}
         onUploadProgress={handleProgress}
-        accept={fileType === "video" ? "video/mp4,video/mov,video/avi,video/mkv,video/webm,video/quicktime" : "image/jpeg,image/png,image/webp,image/gif"}
+        accept={
+          fileType === "video"
+            ? "video/mp4,video/mov,video/avi,video/mkv,video/webm,video/quicktime"
+            : "image/jpeg,image/png,image/webp,image/gif"
+        }
         className="file-input file-input-bordered w-full"
         validateFile={validateFile}
         useUniqueFileName={true}
         folder={fileType === "video" ? "/videos" : "/images"}
       />
 
-      {uploading && (                                                      //conditional rendering while uploading using Lucide react
+      {uploading && (
         <div className="flex items-center gap-2 text-sm text-primary">
           <Loader2 className="w-4 h-4 animate-spin" />
           <span>Uploading...</span>
