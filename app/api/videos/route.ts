@@ -2,7 +2,6 @@ import Video, { IVideo } from "@/models/Video";
 import { authOptions } from "@/utils/auth";
 import { connectToDB } from "@/utils/db";
 import { getServerSession } from "next-auth";
-import { transform } from "next/dist/build/swc/generated-native";
 import { NextRequest, NextResponse } from "next/server";
 
 
