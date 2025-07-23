@@ -15,6 +15,7 @@ export default function Login() {
   const router = useRouter();
   const { showNotification } = useNotification();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -32,7 +33,7 @@ export default function Login() {
         showNotification("Welcome back!", "success");
         router.push("/");
       }
-    } catch (error) {
+    } catch{
       showNotification("Login failed", "error");
     } finally {
       setLoading(false);
@@ -122,7 +123,7 @@ export default function Login() {
 
           <div className="text-center">
             <p className="text-base-content/70">
-              Don't have an account?{" "}
+              {"Don't have an account? "}
               <Link href="/register" className="link link-primary font-medium">
                 Sign up
               </Link>

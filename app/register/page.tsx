@@ -46,7 +46,7 @@ export default function Register() {
         showNotification("Account created successfully!", "success");
         router.push("/login");
       }
-    } catch (error) {
+    } catch {
       showNotification("Registration failed", "error");
     } finally {
       setLoading(false);

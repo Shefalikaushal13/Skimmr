@@ -7,7 +7,7 @@ export async function POST(request: NextRequest){
 
     try {
         const {email,password} = await request.json()
-        console.log("📩 Incoming:", { email, password });
+        console.log("Incoming:", { email, password });
 
         if(!email || !password){
             return NextResponse.json(
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest){
         email,
         password
       })
-      console.log("✅ New user created:", User);
+      console.log("New user created:", User);
 
       return NextResponse.json(
             {message: "User registered successfully"},

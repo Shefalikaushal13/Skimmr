@@ -47,7 +47,7 @@ export default function VideoPlayer({ videoId }: VideoPlayerProps) {
           text: video?.description,
           url: window.location.href,
         });
-      } catch (error) {
+      } catch {
         // User cancelled sharing
       }
     } else {
