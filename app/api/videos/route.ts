@@ -15,7 +15,7 @@ export async function GET() {
 
         return NextResponse.json(videos)
 
-    } catch (error) {
+    } catch {
         return NextResponse.json(
             {error: "Failed to fetch videos"},
             {status: 200}
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest){
         const newVideo= await Video.create(videoData)
         return NextResponse.json(newVideo)
     
-    } catch (error) {
+    } catch {
        return NextResponse.json(
             {error: "Failed to add a video"},
             {status: 200}
